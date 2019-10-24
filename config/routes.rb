@@ -1,3 +1,4 @@
 Rails.application.routes.draw do
-  resources :tweets, only: [:index, :new, :create]
+  root to: 'tweets#index'
+  resources :tweets, only: [:index, :new, :create, :destroy]
 end
