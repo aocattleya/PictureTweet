@@ -35,6 +35,10 @@ class TweetsController < ApplicationController
       params.require(:tweet).permit(:name, :image, :text)
     end
 
+    def set_tweet
+      @tweet = Tweet.find(params[:id])
+    end
+
     def move_to_index
       redirect_to action: :index unless user_signed_in?
     end
