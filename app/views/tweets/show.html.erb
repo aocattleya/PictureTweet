@@ -18,23 +18,23 @@
   </div>
   <div class="container">
     <% if current_user %>
-      <%= form_with(model: [@tweet, @comment], local: true) do |form| %>
-        <%= form.text_area :text, placeholder: "コメントする", rows: "2" %>
-        <%= form.submit "SEND" %>
+      <%= form_with(model: [@tweet, @comment], local: true, id: "new_comment") do |form| %> 
+        <%= form.text_area :text, placeholder: "コメントする" , rows: "2", class: "textbox" %>
+        <%= form.submit "SEND", class: "form__submit" %>
       <% end %>
     <% else %>
       <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
     <% end %>
-  </div>
-  <div class="comments">
-    <h4>＜コメント一覧＞</h4>
-    <% if @comments %>
-      <% @comments.each do |comment| %>
-        <p>
-          <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>：</strong>
-          <%= comment.text %>
-        </p>
+    <div class="comments">
+      <h4>＜コメント一覧＞</h4>
+      <% if @comments %>
+        <% @comments.each do |comment| %>
+          <p>
+            <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>：</strong>
+            <%= comment.text %>
+          </p>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
 </div>
